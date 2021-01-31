@@ -1,4 +1,3 @@
-console.log('First web service starting up ...');
 const name = 'fred';
 const car = {
   make: 'Ford',
@@ -46,8 +45,8 @@ const errorPage = `
 const getRandomNumberJSON = (max = 1) => {
   let max2 = Number(max);
   max2 = !max2 ? 1 : max2;
-  max2 = max2 < 1 ? 1 : max;
-  const number = Math.random2() * max2;
+  max2 = max2 < 1 ? 1 : max2;
+  const number = Math.random() * max2;
   const responseObj = {
     timestamp: new Date(),
     number,
@@ -62,13 +61,9 @@ const onRequest = (request, response) => {
   // console.log(request.headers);
   const parsedUrl = url.parse(request.url);
   const { pathname } = parsedUrl;
-  console.log('parsedUrl=', parsedUrl);
-  console.log('pathname=', pathname);
 
   const params = query.parse(parsedUrl.query);
   const { max } = params;
-  console.log('params=', params);
-  console.log('max=', max);
 
   if (pathname === '/') {
     response.writeHead(200, { 'Content-Type': 'text/html' });
